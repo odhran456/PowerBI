@@ -1,5 +1,5 @@
 {
-  "compatibilityLevel": 1550,
+  "compatibilityLevel": 1567,
   "model": {
     "annotations": [
       {
@@ -694,8 +694,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "int64",
+            "displayFolder": "Columns",
             "formatString": "0",
+            "isHidden": true,
             "lineageTag": "afe16e39-157d-4143-9a14-0708f1501a4e",
             "sourceColumn": "ConfirmedCovidCases",
             "summarizeBy": "sum"
@@ -708,8 +715,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "int64",
+            "displayFolder": "Columns",
             "formatString": "0",
+            "isHidden": true,
             "lineageTag": "eb95c08d-99fb-4788-859e-b8fca0c75985",
             "sourceColumn": "ConfirmedCovidDeaths",
             "summarizeBy": "sum"
@@ -722,8 +736,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "int64",
+            "displayFolder": "Columns",
             "formatString": "0",
+            "isHidden": true,
             "lineageTag": "cc721214-cb42-49e3-bc42-b8fa5b7b4e44",
             "sourceColumn": "ConfirmedCovidRecovered",
             "summarizeBy": "sum"
@@ -736,8 +757,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "int64",
+            "displayFolder": "Columns",
             "formatString": "0",
+            "isHidden": true,
             "lineageTag": "1ef5f12e-541f-41cd-9bd6-ab2ceb3df2bf",
             "sourceColumn": "OBJECTID",
             "summarizeBy": "count"
@@ -750,8 +778,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "int64",
+            "displayFolder": "Columns",
             "formatString": "0",
+            "isHidden": true,
             "lineageTag": "5fbc8e0c-cf21-4614-81f8-761138391f78",
             "sourceColumn": "ORIGID",
             "summarizeBy": "none"
@@ -764,8 +799,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "int64",
+            "displayFolder": "Columns",
             "formatString": "0",
+            "isHidden": true,
             "lineageTag": "6a182647-82da-4935-94db-0591d87dbbb8",
             "sourceColumn": "PopulationCensus16",
             "summarizeBy": "sum"
@@ -782,7 +824,14 @@
                 "value": "{\"isGeneralNumber\":true}"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "double",
+            "displayFolder": "Columns",
+            "isHidden": true,
             "lineageTag": "d8727bb9-9474-4c5f-9b08-e838611bf56b",
             "sourceColumn": "PopulationProportionCovidCases",
             "summarizeBy": "sum"
@@ -795,8 +844,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "dateTime",
+            "displayFolder": "Columns",
             "formatString": "General Date",
+            "isHidden": true,
             "lineageTag": "98403e72-c2ac-403a-b91c-d2d617cf1d07",
             "sourceColumn": "TimeStamp",
             "summarizeBy": "none",
