@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../C-19.Dataset"
+    },
+    "byConnection": null
+  }
+}
