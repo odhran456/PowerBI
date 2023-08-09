@@ -870,6 +870,18 @@
           }
         ],
         "lineageTag": "26318ff4-0f19-4e10-8f94-050dd97e0489",
+        "measures": [
+          {
+            "name": "Number of Cases",
+            "displayFolder": "Measures",
+            "expression": [
+              "",
+              "    SUM ( Txn[ConfirmedCovidCases] ) + 0"
+            ],
+            "formatString": "0",
+            "lineageTag": "082439fc-b015-416a-a763-8581b7d34be8"
+          }
+        ],
         "partitions": [
           {
             "name": "Txn",
