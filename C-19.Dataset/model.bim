@@ -1,10 +1,10 @@
 {
-  "compatibilityLevel": 1550,
+  "compatibilityLevel": 1567,
   "model": {
     "annotations": [
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"Txn Staging\",\"Location Dim\",\"Txn\"]"
+        "value": "[\"Txn Staging\",\"Location Dim\",\"Txn\",\"Dataset Version\",\"Metadata\"]"
       },
       {
         "name": "__PBI_TimeIntelligenceEnabled",
@@ -57,6 +57,22 @@
         ],
         "kind": "m",
         "lineageTag": "42cbfdb0-1315-4112-b4b0-ce0fc2c9fb7b"
+      },
+      {
+        "name": "Dataset Version",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Number"
+          }
+        ],
+        "expression": "1 meta [IsParameterQuery=true, Type=\"Any\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "c52ea9a5-7954-4e21-b252-cba159bd6030"
       }
     ],
     "relationships": [
@@ -674,6 +690,70 @@
         ]
       },
       {
+        "name": "Metadata",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Dataset Version",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "displayFolder": "Columns",
+            "isHidden": true,
+            "lineageTag": "44add4e5-c6f0-4e5c-bae6-258b93a0eb27",
+            "sourceColumn": "Dataset Version",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "ee896f93-167e-4c51-b921-d5a4d5b34388",
+        "measures": [
+          {
+            "name": "DatasetVersion",
+            "displayFolder": "Metadata",
+            "expression": [
+              "",
+              "    MAX ( Metadata[Dataset Version] )"
+            ],
+            "lineageTag": "798aefd2-3f53-4c1d-bbf4-9fceae69e407"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Metadata",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = #\"Dataset Version\",",
+                "    #\"Converted to Table\" = #table(1, {{Source}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Converted to Table\",{{\"Column1\", \"Dataset Version\"}})",
+                "in",
+                "    #\"Renamed Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
         "name": "Txn",
         "annotations": [
           {
@@ -694,8 +774,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "int64",
+            "displayFolder": "Columns",
             "formatString": "0",
+            "isHidden": true,
             "lineageTag": "afe16e39-157d-4143-9a14-0708f1501a4e",
             "sourceColumn": "ConfirmedCovidCases",
             "summarizeBy": "sum"
@@ -708,8 +795,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "int64",
+            "displayFolder": "Columns",
             "formatString": "0",
+            "isHidden": true,
             "lineageTag": "eb95c08d-99fb-4788-859e-b8fca0c75985",
             "sourceColumn": "ConfirmedCovidDeaths",
             "summarizeBy": "sum"
@@ -722,8 +816,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "int64",
+            "displayFolder": "Columns",
             "formatString": "0",
+            "isHidden": true,
             "lineageTag": "cc721214-cb42-49e3-bc42-b8fa5b7b4e44",
             "sourceColumn": "ConfirmedCovidRecovered",
             "summarizeBy": "sum"
@@ -736,8 +837,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "int64",
+            "displayFolder": "Columns",
             "formatString": "0",
+            "isHidden": true,
             "lineageTag": "1ef5f12e-541f-41cd-9bd6-ab2ceb3df2bf",
             "sourceColumn": "OBJECTID",
             "summarizeBy": "count"
@@ -750,8 +858,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "int64",
+            "displayFolder": "Columns",
             "formatString": "0",
+            "isHidden": true,
             "lineageTag": "5fbc8e0c-cf21-4614-81f8-761138391f78",
             "sourceColumn": "ORIGID",
             "summarizeBy": "none"
@@ -764,8 +879,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "int64",
+            "displayFolder": "Columns",
             "formatString": "0",
+            "isHidden": true,
             "lineageTag": "6a182647-82da-4935-94db-0591d87dbbb8",
             "sourceColumn": "PopulationCensus16",
             "summarizeBy": "sum"
@@ -782,7 +904,14 @@
                 "value": "{\"isGeneralNumber\":true}"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "double",
+            "displayFolder": "Columns",
+            "isHidden": true,
             "lineageTag": "d8727bb9-9474-4c5f-9b08-e838611bf56b",
             "sourceColumn": "PopulationProportionCovidCases",
             "summarizeBy": "sum"
@@ -795,8 +924,15 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "dateTime",
+            "displayFolder": "Columns",
             "formatString": "General Date",
+            "isHidden": true,
             "lineageTag": "98403e72-c2ac-403a-b91c-d2d617cf1d07",
             "sourceColumn": "TimeStamp",
             "summarizeBy": "none",
@@ -814,6 +950,18 @@
           }
         ],
         "lineageTag": "26318ff4-0f19-4e10-8f94-050dd97e0489",
+        "measures": [
+          {
+            "name": "Number of Cases",
+            "displayFolder": "Measures",
+            "expression": [
+              "",
+              "    SUM ( Txn[ConfirmedCovidCases] ) + 0"
+            ],
+            "formatString": "0",
+            "lineageTag": "082439fc-b015-416a-a763-8581b7d34be8"
+          }
+        ],
         "partitions": [
           {
             "name": "Txn",
