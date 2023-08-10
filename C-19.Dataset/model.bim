@@ -4,7 +4,7 @@
     "annotations": [
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"Txn Staging\",\"Location Dim\",\"Txn\"]"
+        "value": "[\"Txn Staging\",\"Location Dim\",\"Txn\",\"Dataset Version\",\"Metadata\"]"
       },
       {
         "name": "__PBI_TimeIntelligenceEnabled",
@@ -57,6 +57,22 @@
         ],
         "kind": "m",
         "lineageTag": "42cbfdb0-1315-4112-b4b0-ce0fc2c9fb7b"
+      },
+      {
+        "name": "Dataset Version",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Number"
+          }
+        ],
+        "expression": "1 meta [IsParameterQuery=true, Type=\"Any\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "c52ea9a5-7954-4e21-b252-cba159bd6030"
       }
     ],
     "relationships": [
@@ -667,6 +683,70 @@
                 "    #\"Removed Duplicates\" = Table.Distinct(#\"Removed Other Columns\", {\"ORIGID\"})",
                 "in",
                 "    #\"Removed Duplicates\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Metadata",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Dataset Version",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "displayFolder": "Columns",
+            "isHidden": true,
+            "lineageTag": "44add4e5-c6f0-4e5c-bae6-258b93a0eb27",
+            "sourceColumn": "Dataset Version",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "ee896f93-167e-4c51-b921-d5a4d5b34388",
+        "measures": [
+          {
+            "name": "DatasetVersion",
+            "displayFolder": "Metadata",
+            "expression": [
+              "",
+              "    MAX ( Metadata[Dataset Version] )"
+            ],
+            "lineageTag": "798aefd2-3f53-4c1d-bbf4-9fceae69e407"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Metadata",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = #\"Dataset Version\",",
+                "    #\"Converted to Table\" = #table(1, {{Source}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Converted to Table\",{{\"Column1\", \"Dataset Version\"}})",
+                "in",
+                "    #\"Renamed Columns\""
               ],
               "type": "m"
             }
