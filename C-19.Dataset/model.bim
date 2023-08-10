@@ -70,7 +70,7 @@
             "value": "Number"
           }
         ],
-        "expression": "1 meta [IsParameterQuery=true, Type=\"Any\", IsParameterQueryRequired=true]",
+        "expression": "1.1 meta [IsParameterQuery=true, Type=\"Any\", IsParameterQueryRequired=true]",
         "kind": "m",
         "lineageTag": "c52ea9a5-7954-4e21-b252-cba159bd6030"
       }
