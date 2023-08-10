@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "datasetReference": {
+    "byPath": null,
+    "byConnection": {
+      "connectionString": "Data Source=pbiazure://api.powerbi.com;Initial Catalog=5a695746-d5d1-4757-8e01-a42dcbb379a7;Identity Provider=\"https://login.microsoftonline.com/common, https://analysis.windows.net/powerbi/api, 7f67af8a-fedc-4b08-8b4e-37c4d127b6cf\";Integrated Security=ClaimsToken",
+      "pbiServiceModelId": 94444,
+      "pbiModelVirtualServerName": "sobe_wowvirtualserver",
+      "pbiModelDatabaseName": "5a695746-d5d1-4757-8e01-a42dcbb379a7",
+      "name": "EntityDataSource",
+      "connectionType": "pbiServiceLive"
+    }
+  }
+}
