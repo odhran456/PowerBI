@@ -1,0 +1,134 @@
+table Txn
+	lineageTag: 26318ff4-0f19-4e10-8f94-050dd97e0489
+
+	measure 'Number of Cases' = ```
+			
+			    SUM ( Txn[ConfirmedCovidCases] ) + 0
+			```
+		formatString: 0
+		displayFolder: Measures
+		lineageTag: 082439fc-b015-416a-a763-8581b7d34be8
+
+	column OBJECTID
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Columns
+		lineageTag: 1ef5f12e-541f-41cd-9bd6-ab2ceb3df2bf
+		summarizeBy: count
+		sourceColumn: OBJECTID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ORIGID
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Columns
+		lineageTag: 5fbc8e0c-cf21-4614-81f8-761138391f78
+		summarizeBy: none
+		sourceColumn: ORIGID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PopulationCensus16
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Columns
+		lineageTag: 6a182647-82da-4935-94db-0591d87dbbb8
+		summarizeBy: sum
+		sourceColumn: PopulationCensus16
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column TimeStamp
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		displayFolder: Columns
+		lineageTag: 98403e72-c2ac-403a-b91c-d2d617cf1d07
+		summarizeBy: none
+		sourceColumn: TimeStamp
+
+		variation Variation
+			isDefault
+			relationship: fcd5a3a1-525e-4dad-8168-c4b840e6c8a0
+			defaultHierarchy: LocalDateTable_baa7bd17-0998-4bb0-bc84-8e152b7ad0d4.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConfirmedCovidCases
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Columns
+		lineageTag: afe16e39-157d-4143-9a14-0708f1501a4e
+		summarizeBy: sum
+		sourceColumn: ConfirmedCovidCases
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PopulationProportionCovidCases
+		dataType: double
+		isHidden
+		displayFolder: Columns
+		lineageTag: d8727bb9-9474-4c5f-9b08-e838611bf56b
+		summarizeBy: sum
+		sourceColumn: PopulationProportionCovidCases
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ConfirmedCovidDeaths
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Columns
+		lineageTag: eb95c08d-99fb-4788-859e-b8fca0c75985
+		summarizeBy: sum
+		sourceColumn: ConfirmedCovidDeaths
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConfirmedCovidRecovered
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: Columns
+		lineageTag: cc721214-cb42-49e3-bc42-b8fa5b7b4e44
+		summarizeBy: sum
+		sourceColumn: ConfirmedCovidRecovered
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Txn = m
+		mode: import
+		source =
+				let
+				    Source = #"Txn Staging",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"OBJECTID", "ORIGID", "PopulationCensus16", "TimeStamp", "ConfirmedCovidCases", "PopulationProportionCovidCases", "ConfirmedCovidDeaths", "ConfirmedCovidRecovered"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

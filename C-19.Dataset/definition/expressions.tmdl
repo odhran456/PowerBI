@@ -1,0 +1,18 @@
+expression 'Txn Staging' =
+		let
+		    Source = Csv.Document(File.Contents("C:\Users\odhra\Downloads\COVID-19_HPSC_County_Statistics_Historic_Data.csv"),[Delimiter=",", Columns=16, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"OBJECTID", Int64.Type}, {"ORIGID", Int64.Type}, {"CountyName", type text}, {"PopulationCensus16", Int64.Type}, {"TimeStamp", type datetime}, {"IGEasting", Int64.Type}, {"IGNorthing", Int64.Type}, {"Lat", type number}, {"Long", type number}, {"UGI", type text}, {"ConfirmedCovidCases", Int64.Type}, {"PopulationProportionCovidCases", type number}, {"ConfirmedCovidDeaths", Int64.Type}, {"ConfirmedCovidRecovered", Int64.Type}, {"SHAPE_Length", type number}, {"SHAPE_Area", type number}})
+		in
+		    #"Changed Type"
+	lineageTag: 42cbfdb0-1315-4112-b4b0-ce0fc2c9fb7b
+
+	annotation PBI_ResultType = Table
+
+expression 'Dataset Version' = 1.2 meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: c52ea9a5-7954-4e21-b252-cba159bd6030
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Number
+

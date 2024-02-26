@@ -1,0 +1,9 @@
+relationship fcd5a3a1-525e-4dad-8168-c4b840e6c8a0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Txn.TimeStamp
+	toColumn: LocalDateTable_baa7bd17-0998-4bb0-bc84-8e152b7ad0d4.Date
+
+relationship f25624ad-07ed-4368-9202-6329fcb030a2
+	fromColumn: Txn.ORIGID
+	toColumn: 'Location Dim'.ORIGID
+

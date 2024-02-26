@@ -1,0 +1,34 @@
+table Metadata
+	lineageTag: ee896f93-167e-4c51-b921-d5a4d5b34388
+
+	measure DatasetVersion = ```
+			
+			    MAX ( Metadata[Dataset Version] )
+			```
+		displayFolder: Metadata
+		lineageTag: 798aefd2-3f53-4c1d-bbf4-9fceae69e407
+
+	column 'Dataset Version'
+		dataType: string
+		isHidden
+		displayFolder: Columns
+		lineageTag: 44add4e5-c6f0-4e5c-bae6-258b93a0eb27
+		summarizeBy: none
+		sourceColumn: Dataset Version
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Metadata = m
+		mode: import
+		source =
+				let
+				    Source = #"Dataset Version",
+				    #"Converted to Table" = #table(1, {{Source}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Dataset Version"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

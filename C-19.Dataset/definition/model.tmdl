@@ -1,0 +1,22 @@
+model Model
+	culture: en-IE
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IE
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Txn Staging","Location Dim","Txn","Dataset Version","Metadata"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.126.927.0 (24.02)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'Location Dim'
+ref table DateTableTemplate_4222ed15-5b0e-4797-b07e-3b003e945a4c
+ref table Txn
+ref table LocalDateTable_baa7bd17-0998-4bb0-bc84-8e152b7ad0d4
+ref table Metadata
+

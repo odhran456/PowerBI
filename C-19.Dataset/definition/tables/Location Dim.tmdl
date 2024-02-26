@@ -1,0 +1,98 @@
+table 'Location Dim'
+	lineageTag: a5cf3b93-4867-4b47-929d-045bf0e75976
+
+	column ORIGID
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b5c4d8f-a4c1-4022-9549-375b91a299f5
+		summarizeBy: none
+		sourceColumn: ORIGID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountyName
+		dataType: string
+		lineageTag: 666dc34f-43f5-4019-ac28-e8b6f78bc002
+		summarizeBy: none
+		sourceColumn: CountyName
+
+		annotation SummarizationSetBy = Automatic
+
+	column IGEasting
+		dataType: int64
+		formatString: 0
+		lineageTag: ac60d2e5-30e1-4154-aaad-da86e6e6a571
+		summarizeBy: none
+		sourceColumn: IGEasting
+
+		annotation SummarizationSetBy = Automatic
+
+	column IGNorthing
+		dataType: int64
+		formatString: 0
+		lineageTag: fbe0e765-2607-488a-8b15-45520160c2a7
+		summarizeBy: none
+		sourceColumn: IGNorthing
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lat
+		dataType: double
+		lineageTag: afeccad4-1efc-4b05-9624-b046bdc65f59
+		summarizeBy: none
+		sourceColumn: Lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Long
+		dataType: double
+		lineageTag: 316afcf8-f5fc-467d-b327-5ffafe6fdc42
+		summarizeBy: none
+		sourceColumn: Long
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UGI
+		dataType: string
+		lineageTag: 673167df-51a2-49bc-9014-28d910c8d7a8
+		summarizeBy: none
+		sourceColumn: UGI
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHAPE_Length
+		dataType: double
+		lineageTag: 2a249e86-9d73-42a5-8cb0-9d4794c62e7e
+		summarizeBy: none
+		sourceColumn: SHAPE_Length
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SHAPE_Area
+		dataType: double
+		lineageTag: 30233395-333b-4389-94e8-599073d98938
+		summarizeBy: none
+		sourceColumn: SHAPE_Area
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Location Dim' = m
+		mode: import
+		source =
+				let
+				    Source = #"Txn Staging",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"ORIGID", "CountyName", "IGEasting", "IGNorthing", "Lat", "Long", "UGI", "SHAPE_Length", "SHAPE_Area"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns", {"ORIGID"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_ResultType = Table
+
