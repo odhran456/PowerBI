@@ -9,7 +9,7 @@ expression 'Txn Staging' =
 
 	annotation PBI_ResultType = Table
 
-expression 'Dataset Version' = 1.2 meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+expression 'Dataset Version' = 1.4 meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
 	lineageTag: c52ea9a5-7954-4e21-b252-cba159bd6030
 
 	annotation PBI_NavigationStepName = Navigation
